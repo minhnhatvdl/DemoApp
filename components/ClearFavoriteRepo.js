@@ -1,6 +1,6 @@
 import React, {useCallback} from 'react';
 import {useDispatch} from 'react-redux';
-import {Button} from 'react-native';
+import {Button, Alert} from 'react-native';
 import color from '../constants/color';
 import {clearAllFavoriteRepo} from '../store/actions';
 
@@ -8,6 +8,7 @@ const ClearFavoriteRepo = () => {
   const dispatch = useDispatch();
   const handleClearAllFavoriteRepo = useCallback(() => {
     dispatch(clearAllFavoriteRepo());
+    Alert.alert('Hello', 'Your favorites repositories have been deleted');
   }, [dispatch]);
   return (
     <Button
