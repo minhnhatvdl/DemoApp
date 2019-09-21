@@ -8,9 +8,9 @@ import {getListRepo, resetListRepo} from '../store/actions';
 const SearchBar = () => {
   const [username, setUsername] = useState('');
   const dispatch = useDispatch();
-
-  const onPress = useCallback(() => {
+  const handleSearch = useCallback(() => {
     if (username.trim()) {
+      // search username
       dispatch(getListRepo(username));
     } else {
       dispatch(resetListRepo());
@@ -24,7 +24,7 @@ const SearchBar = () => {
         value={username}
         onChangeText={value => setUsername(value)}
       />
-      <TouchableOpacity onPress={onPress}>
+      <TouchableOpacity onPress={handleSearch}>
         <Ionicons name="ios-search" size={32} color={color.primaryColor} />
       </TouchableOpacity>
     </View>
@@ -36,6 +36,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     marginBottom: 10,
+    zIndex: 1,
   },
   input: {
     width: '80%',

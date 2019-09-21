@@ -8,7 +8,7 @@ const ClearFavoriteRepo = () => {
   const dispatch = useDispatch();
   const handleClearAllFavoriteRepo = useCallback(() => {
     dispatch(clearAllFavoriteRepo());
-    Alert.alert('Hello', 'Your favorites repositories have been deleted');
+    Alert.alert('Hello', 'All favorites repositories have been deleted');
   }, [dispatch]);
   return (
     <Button

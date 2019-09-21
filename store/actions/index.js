@@ -4,12 +4,16 @@ import {
   GET_FAVORITE_REPO,
   TOGGLE_FAVORITE_REPO,
   CLEAR_ALL_FAVORITE_REPO,
+  TOGGLE_LOADING,
 } from './constants';
 import github from '../apis/github';
 import AsyncStorage from '@react-native-community/async-storage';
 // get lits of repo
 export const getListRepo = username => async dispatch => {
   try {
+    // show loading
+    dispatch(toggleLoading(true));
+    // get data
     const response = await github.get(`/users/${username}/repos`);
     if (response.data.length > 0) {
       dispatch({
@@ -21,8 +25,13 @@ export const getListRepo = username => async dispatch => {
     } else {
       dispatch(resetListRepo());
     }
+    // hide loading
+    dispatch(toggleLoading(false));
   } catch (error) {
+    // reset list of repo
     dispatch(resetListRepo());
+    // hide loading
+    dispatch(toggleLoading(false));
   }
 };
 // reset list of repo
@@ -82,4 +91,13 @@ export const clearAllFavoriteRepo = () => async dispatch => {
       favoriteRepo: [],
     },
   });
+};
+// toggle loading
+export const toggleLoading = loading => {
+  return {
+    type: TOGGLE_LOADING,
+    payload: {
+      loading,
+    },
+  };
 };
