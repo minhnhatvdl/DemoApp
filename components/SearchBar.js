@@ -9,11 +9,10 @@ const SearchBar = () => {
   const [username, setUsername] = useState('');
   const dispatch = useDispatch();
   const handleSearch = useCallback(() => {
+    dispatch(resetListRepo());
     if (username.trim()) {
       // search username
       dispatch(getListRepo(username));
-    } else {
-      dispatch(resetListRepo());
     }
   }, [dispatch, username]);
   return (
