@@ -1,14 +1,8 @@
-import React, {useEffect} from 'react';
-import {useDispatch} from 'react-redux';
+import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import ListFavoriteRepo from '../components/ListFavoriteRepo';
-import {getFavoriteRepo} from '../store/actions';
 
 const FavoriteScreen = () => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getFavoriteRepo());
-  }, [dispatch]);
   return (
     <View style={styles.screen}>
       <ListFavoriteRepo />
