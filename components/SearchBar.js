@@ -3,13 +3,16 @@ import {StyleSheet, View, TextInput, TouchableOpacity} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {useDispatch} from 'react-redux';
 import color from '../constants/color';
-import {getListRepo, resetListRepo} from '../store/actions';
+import {getListRepo, resetListRepo, setValueUsername} from '../store/actions';
 
 const SearchBar = () => {
   const [username, setUsername] = useState('');
   const dispatch = useDispatch();
   const handleSearch = useCallback(() => {
+    // reset list of repo
     dispatch(resetListRepo());
+    // set username in store
+    dispatch(setValueUsername(username.trim()));
     if (username.trim()) {
       // search username
       dispatch(getListRepo(username));

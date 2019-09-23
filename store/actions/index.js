@@ -5,6 +5,7 @@ import {
   TOGGLE_FAVORITE_REPO,
   CLEAR_ALL_FAVORITE_REPO,
   TOGGLE_LOADING,
+  SET_USERNAME,
 } from './constants';
 import github from '../apis/github';
 import AsyncStorage from '@react-native-community/async-storage';
@@ -98,6 +99,15 @@ export const toggleLoading = loading => {
     type: TOGGLE_LOADING,
     payload: {
       loading,
+    },
+  };
+};
+// set username
+export const setValueUsername = username => {
+  return {
+    type: SET_USERNAME,
+    payload: {
+      username,
     },
   };
 };

@@ -7,3 +7,5 @@ export const TOGGLE_FAVORITE_REPO = 'TOGGLE_FAVORITE_REPO';
 export const CLEAR_ALL_FAVORITE_REPO = 'CLEAR_ALL_FAVORITE_REPO';
 // loading
 export const TOGGLE_LOADING = 'TOGGLE_LOADING';
+// username
+export const SET_USERNAME = 'SET_USERNAME';
